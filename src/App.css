@@ -39,8 +39,8 @@ header {
 }
 .dark-toggle {
   background-color: transparent;
-  border: 1px solid #007acc;
-  color: #007acc;
+  border: 1px solid #004675;
+  color: #004675;
   padding: 6px 12px;
   margin-left: 1rem;
   border-radius: 6px;
@@ -50,7 +50,7 @@ header {
 }
 
 .dark-toggle:hover {
-  background-color: #007acc;
+  background-color: #000000;
   color: #fff;
 }
 .digital-clock {
@@ -76,15 +76,20 @@ header {
 }
 
 .navgation a {
-  color: #333;
-  text-decoration: none;
+background-color: transparent;
+  border: 1px solid #007acc;
+  color: #007acc;
+  padding: 6px 12px;
   margin-left: 1rem;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navgation a:hover {
-  color: #007acc;
+  background-color: #007acc;
+  color: #fff;
 }
 
 section {
