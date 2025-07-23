@@ -29,7 +29,7 @@ function home() {
             <a href="https://www.linkedin.com/in/omar-alawneh-1a532124b/">
               <i><FaLinkedin/></i>
             </a>
-            <a href="https://www.instagram.com/omar_alawneh.7/">
+            <a href="https://www.instagram.com/omar_alawneh01/">
               <i><FaInstagram/></i>
             </a>
             <a href="https://www.facebook.com/omar.alawneh.549">
