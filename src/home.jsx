@@ -36,9 +36,6 @@ function home() {
             <a href="https://www.facebook.com/omar.alawneh.549">
               <i><FaFacebook/></i>
             </a>
-            <a href="https://twitter.com/omaralawneh01">
-              <i> <FaXTwitter/></i>
-            </a>
           </div>
         </span>
       </h2>
