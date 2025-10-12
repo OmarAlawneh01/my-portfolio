@@ -1,5 +1,6 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaLinkedin, FaGithub , FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaLinkedin, FaGithub , FaInstagram ,FaXTwitter  } from 'react-icons/fa';
+  
 
 
 function home() {
@@ -36,7 +37,7 @@ function home() {
               <i><FaFacebook/></i>
             </a>
             <a href="https://twitter.com/omaralawneh01">
-              <i> <FaTwitter/></i>
+              <i> <FaXTwitter/></i>
             </a>
           </div>
         </span>
