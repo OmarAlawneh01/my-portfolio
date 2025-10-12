@@ -17,7 +17,7 @@ function Header() {
         <a href="#project">Projects</a>
         <a href="#content">Contact</a>
         <a
-          href="https://drive.google.com/file/d/1Hihbcp3evFED3yuZOhcNeFOnLSi--XbP/view?usp=drive_link"
+          href="https://docs.google.com/document/d/11YUUf3KDXD3HevVijZSrK_AXP5m4P5P5fKeii5bT40o/edit?usp=sharing"
           download
         >
           my cv

@@ -22,6 +22,14 @@ function Projects(){
                   </a>
                 </h1>
               </li>
+              <br />
+              <li>
+                <h1>
+                  <a href="">
+                    Online Store 
+                  </a>
+                </h1>
+              </li>
             </ul>
           </div>
         </div>
