@@ -148,6 +148,12 @@ section {
   gap: 2rem;
   justify-content: center;
 }
+.main .social-icons a svg {
+  font-size: 1.5rem; /* Increase as needed */
+  margin: 0 0.5rem;
+  vertical-align: middle;
+  transition: color 0.3s;
+}
 
 .card {
   background-color: #fff;
@@ -347,3 +353,4 @@ body.dark-mode .fotter .social-icons a:hover {
     width: 90%;
   }
 }
+
