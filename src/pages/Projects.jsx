@@ -1,30 +1,42 @@
 import React from "react";
+import jetsetVideo from "../assets/videos/jetsetgo-video.mp4";
+import storeVideo from "../assets/videos/online-store-video.mp4";
+import taskVideo from "../assets/videos/task-mangament video.mp4";
+import gamesVideo from "../assets/videos/video for the game website.mp4";
 
-// If you have real demo URLs, replace the `demoUrl` placeholders below.
+// Each project now has a short inline video demo.
 const projects = [
   {
     name: "JetSetGo",
-    description: "Travel booking experience with clear flows and engaging visuals.",
+    description:
+      "Travel booking experience with clear, intuitive flows and engaging visuals.",
     repoUrl: "https://github.com/OmarAlawneh01/JetSetGo.git",
-    demoUrl: "", // e.g. "https://jetsetgo-demo.example.com"
+    demoUrl: "",
+    videoSrc: jetsetVideo,
   },
   {
     name: "Online Store",
-    description: "Clean storefront layout with focus on product discovery.",
+    description:
+      "Responsive storefront layout with a focus on clean product discovery.",
     repoUrl: "",
-    demoUrl: "", // e.g. "https://online-store-demo.example.com"
+    demoUrl: "",
+    videoSrc: storeVideo,
   },
   {
     name: "Task Management System",
-    description: "Task planning and tracking system built for clear team workflows.",
+    description:
+      "Task planning and tracking system built for smooth, collaborative workflows.",
     repoUrl: "",
     demoUrl: "",
+    videoSrc: taskVideo,
   },
   {
     name: "Games Website",
-    description: "A fast, clean gaming portal with modern UI and smooth navigation.",
+    description:
+      "A fast, modern gaming portal with smooth navigation and bold visuals.",
     repoUrl: "",
     demoUrl: "https://gf-now.com/",
+    videoSrc: gamesVideo,
   },
 ];
 
@@ -67,11 +79,22 @@ function Projects() {
             <p className="proj-desc">{project.description}</p>
 
             <div className="proj-media">
-              <p className="proj-placeholder">
-                {project.demoUrl
-                  ? "Open the live demo to see this project in action."
-                  : "Demo coming soon – stay tuned for a live preview."}
-              </p>
+              {project.videoSrc ? (
+                <video
+                  className="proj-video"
+                  src={project.videoSrc}
+                  controls
+                  muted
+                  loop
+                  playsInline
+                />
+              ) : (
+                <p className="proj-placeholder">
+                  {project.demoUrl
+                    ? "Open the live demo to see this project in action."
+                    : "Demo coming soon – stay tuned for a live preview."}
+                </p>
+              )}
             </div>
           </article>
         ))}
