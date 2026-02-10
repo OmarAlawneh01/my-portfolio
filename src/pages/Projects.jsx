@@ -9,7 +9,7 @@ const projects = [
   {
     name: "JetSetGo",
     description:
-      "Travel booking experience with clear, intuitive flows and engaging visuals.",
+      "simplify the travel planning process through development of an individual travel suggestion web platform including AI and real-time data integration technologies that provide users with customized suggestions on where to go, stay, and enjoy.",
     repoUrl: "https://github.com/OmarAlawneh01/JetSetGo.git",
     demoUrl: "",
     videoSrc: jetsetVideo,
@@ -17,16 +17,16 @@ const projects = [
   {
     name: "Online Store",
     description:
-      "Responsive storefront layout with a focus on clean product discovery.",
-    repoUrl: "",
+      "n Online Store System that supported two types of users: Regular Users and Admin Users. Regular users could register, log in, add products to their cart, and view reviews from other users",
+    repoUrl: "https://github.com/OmarAlawneh01/Online-Store-System-",
     demoUrl: "",
     videoSrc: storeVideo,
   },
   {
     name: "Task Management System",
     description:
-      "Task planning and tracking system built for smooth, collaborative workflows.",
-    repoUrl: "",
+      "A task management system that allows users to create, edit, and delete tasks, and view tasks in a list format.",
+    repoUrl: "https://github.com/OmarAlawneh01/Task-Management-system-",
     demoUrl: "",
     videoSrc: taskVideo,
   },
@@ -34,8 +34,8 @@ const projects = [
     name: "Games Website",
     description:
       "A fast, modern gaming portal with smooth navigation and bold visuals.",
-    repoUrl: "",
-    demoUrl: "https://gf-now.com/",
+    repoUrl: "https://github.com/OmarAlawneh01/Blog-project",
+    demoUrl: "",
     videoSrc: gamesVideo,
   },
 ];
