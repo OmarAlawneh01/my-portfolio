@@ -42,3 +42,12 @@ temp/
 
 # Generated / project-specific
 allfiles.txt
+
+node_modules/
+dist/
+.env
+*.mp4
+*.mov
+*.avi
+src/assets/videos/
+
