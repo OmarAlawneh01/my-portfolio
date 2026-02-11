@@ -1,34 +1,29 @@
 import React from "react";
-import jetsetVideo from "../assets/videos/jetsetgo-video.mp4";
-import storeVideo from "../assets/videos/online-store-video.mp4";
-import taskVideo from "../assets/videos/task-mangament video.mp4";
-import gamesVideo from "../assets/videos/video for the game website.mp4";
-
 // Each project now has a short inline video demo.
 const projects = [
   {
     name: "JetSetGo",
     description:
-      "simplify the travel planning process through development of an individual travel suggestion web platform including AI and real-time data integration technologies that provide users with customized suggestions on where to go, stay, and enjoy.",
+      "Travel booking experience with clear, intuitive flows and engaging visuals.",
     repoUrl: "https://github.com/OmarAlawneh01/JetSetGo.git",
     demoUrl: "",
-    videoSrc: jetsetVideo,
+    videoSrc: "https://res.cloudinary.com/dmdbcrae4/video/upload/v1770744431/jetsetgo-video_i4slca.mp4",
   },
   {
     name: "Online Store",
     description:
-      "n Online Store System that supported two types of users: Regular Users and Admin Users. Regular users could register, log in, add products to their cart, and view reviews from other users",
+      "Responsive storefront layout with a focus on clean product discovery.",
     repoUrl: "https://github.com/OmarAlawneh01/Online-Store-System-",
     demoUrl: "",
-    videoSrc: storeVideo,
+    videoSrc: "https://res.cloudinary.com/dmdbcrae4/video/upload/v1770822036/online_store_video_mkbaqx.mp4",
   },
   {
     name: "Task Management System",
     description:
-      "A task management system that allows users to create, edit, and delete tasks, and view tasks in a list format.",
+      "Task planning and tracking system built for smooth, collaborative workflows.",
     repoUrl: "https://github.com/OmarAlawneh01/Task-Management-system-",
     demoUrl: "",
-    videoSrc: taskVideo,
+    videoSrc: "https://res.cloudinary.com/dmdbcrae4/video/upload/v1770822222/Task-mangament_video_pgn6jw.mp4",
   },
   {
     name: "Games Website",
@@ -36,7 +31,7 @@ const projects = [
       "A fast, modern gaming portal with smooth navigation and bold visuals.",
     repoUrl: "https://github.com/OmarAlawneh01/Blog-project",
     demoUrl: "",
-    videoSrc: gamesVideo,
+    videoSrc: "https://res.cloudinary.com/dmdbcrae4/video/upload/v1770822256/video_for_the_game_website_aea1lw.mp4",
   },
 ];
 
