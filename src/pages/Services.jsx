@@ -1,41 +1,49 @@
-import React from "react";
-import { FaCode, FaPaintBrush, FaMobileAlt } from "react-icons/fa";
+import React from 'react';
+import { useTheme } from '../contexts/ThemeContext';
+import { servicesData } from '../constants/services';
+import './Services.css';
 
-function Services(){
+function Services() {
+  const { theme } = useTheme();
+
   return (
-    <section className="cards-cont" id="services">
-      <h2 className="titel">services</h2>
-      <div className="content">
-        <div className="card">
-          <div className="icon">
-            <FaCode size={50} />
-          </div>
-          <div className="info">
-            <h3>Web Development</h3>
-            <p>I can build responsive and modern web applications using the latest technologies.</p>
-          </div>
-        </div>
-        <div className="card">
-          <div className="icon">
-            <FaPaintBrush size={50} />
-          </div>
-          <div className="info">
-            <h3>UI/UX Design</h3>
-            <p>I design intuitive and visually appealing interfaces for users.</p>
-          </div>
-        </div>
-        <div className="card">
-          <div className="icon">
-            <FaMobileAlt size={50} />
-          </div>
-          <div className="info">
-            <h3>Responsive Design</h3>
-            <p>Your website will look great on all devices, from desktop to mobile.</p>
-          </div>
+    <section 
+      className="services-section" 
+      id="services"
+      style={{ backgroundColor: theme.secondary }}
+    >
+      <div className="section-container">
+        <h2 className="section-title" style={{ color: theme.primary }}>
+          Services
+        </h2>
+        <p className="section-subtitle" style={{ color: theme.textSecondary }}>
+          What I can help you with
+        </p>
+
+        <div className="services-grid">
+          {servicesData.map((service) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={service.id}
+                className="service-card"
+                style={{
+                  backgroundColor: theme.surfaceLight,
+                  boxShadow: `0 4px 12px ${theme.shadow}`,
+                }}
+              >
+                <div className="service-icon" style={{ color: theme.primary }}>
+                  <Icon size={40} />
+                </div>
+                <h3 style={{ color: theme.text }}>{service.title}</h3>
+                <p style={{ color: theme.textSecondary }}>{service.description}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
-};
+}
 
 export default Services;
