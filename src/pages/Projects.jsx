@@ -1,98 +1,92 @@
-import React from "react";
-// Each project now has a short inline video demo.
-const projects = [
-  {
-    name: "JetSetGo",
-    description:
-      "Travel booking experience with clear, intuitive flows and engaging visuals.",
-    repoUrl: "https://github.com/OmarAlawneh01/JetSetGo.git",
-    demoUrl: "",
-    videoSrc: "https://res.cloudinary.com/dmdbcrae4/video/upload/v1770744431/jetsetgo-video_i4slca.mp4",
-  },
-  {
-    name: "Online Store",
-    description:
-      "Responsive storefront layout with a focus on clean product discovery.",
-    repoUrl: "https://github.com/OmarAlawneh01/Online-Store-System-",
-    demoUrl: "",
-    videoSrc: "https://res.cloudinary.com/dmdbcrae4/video/upload/v1770822036/online_store_video_mkbaqx.mp4",
-  },
-  {
-    name: "Task Management System",
-    description:
-      "Task planning and tracking system built for smooth, collaborative workflows.",
-    repoUrl: "https://github.com/OmarAlawneh01/Task-Management-system-",
-    demoUrl: "",
-    videoSrc: "https://res.cloudinary.com/dmdbcrae4/video/upload/v1770822222/Task-mangament_video_pgn6jw.mp4",
-  },
-  {
-    name: "Games Website",
-    description:
-      "A fast, modern gaming portal with smooth navigation and bold visuals.",
-    repoUrl: "https://github.com/OmarAlawneh01/Blog-project",
-    demoUrl: "",
-    videoSrc: "https://res.cloudinary.com/dmdbcrae4/video/upload/v1770822256/video_for_the_game_website_aea1lw.mp4",
-  },
-];
+import React, { useState } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
+import { projectsData } from '../constants/projects';
+import EnhancedVideo from '../components/EnhancedVideo';
+import './Projects.css';
 
 function Projects() {
+  const { theme } = useTheme();
+  const [hoveredId, setHoveredId] = useState(null);
+
   return (
-    <section className="projects" id="project">
-      <h2 className="title">My Projects</h2>
-      <p className="projects-subtitle">Selected work with short demos.</p>
+    <section 
+      className="projects-section" 
+      id="projects"
+      style={{ backgroundColor: theme.secondary }}
+    >
+      <div className="section-container">
+        <h2 className="section-title" style={{ color: theme.primary }}>
+          Featured Projects
+        </h2>
+        <p className="section-subtitle" style={{ color: theme.textSecondary }}>
+          A selection of recent work with live demos
+        </p>
 
-      <div className="projects-grid">
-        {projects.map((project) => (
-          <article key={project.name} className="proj-card reveal">
-            <div className="proj-head">
-              <h3>{project.name}</h3>
-              <div>
-                {project.repoUrl && (
-                  <a
-                    className="proj-link"
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                )}
-                {project.demoUrl && (
-                  <a
-                    className="proj-link"
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ marginLeft: project.repoUrl ? "0.5rem" : 0 }}
-                  >
-                    Demo
-                  </a>
-                )}
+        <div className="projects-grid">
+          {projectsData.map((project) => (
+            <article
+              key={project.id}
+              className="project-card reveal"
+              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              style={{
+                backgroundColor: theme.surfaceLight,
+                boxShadow: hoveredId === project.id 
+                  ? `0 16px 32px ${theme.shadowHeavy}` 
+                  : `0 8px 16px ${theme.shadow}`,
+              }}
+            >
+              <div className="project-header">
+                <h3 style={{ color: theme.primary }}>{project.name}</h3>
+                <div className="project-links">
+                  {project.repoUrl && (
+                    <a
+                      className="project-link"
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: theme.primary,
+                        borderColor: theme.primary,
+                      }}
+                    >
+                      GitHub →
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <p className="proj-desc">{project.description}</p>
+              <p className="project-description" style={{ color: theme.text }}>
+                {project.description}
+              </p>
 
-            <div className="proj-media">
-              {project.videoSrc ? (
-                <video
-                  className="proj-video"
-                  src={project.videoSrc}
-                  controls
-                  muted
-                  loop
-                  playsInline
+              {/* Tags */}
+              <div className="project-tags">
+                {project.tags?.map((tag) => (
+                  <span
+                    key={tag}
+                    className="tag"
+                    style={{
+                      backgroundColor: `${theme.primary}15`,
+                      color: theme.primary,
+                      borderColor: theme.primary,
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Enhanced Video Component */}
+              {project.videoSrc && (
+                <EnhancedVideo 
+                  src={project.videoSrc} 
+                  title={project.name}
                 />
-              ) : (
-                <p className="proj-placeholder">
-                  {project.demoUrl
-                    ? "Open the live demo to see this project in action."
-                    : "Demo coming soon – stay tuned for a live preview."}
-                </p>
               )}
-            </div>
-          </article>
-        ))}
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
