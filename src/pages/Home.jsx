@@ -64,14 +64,8 @@ function Home() {
           className="hero-cta"
           onClick={handleScrollDown}
           style={{
-            backgroundColor: theme.primary,
+            background: 'linear-gradient(135deg, var(--primary), var(--primary-light, #3d8ee6))',
             color: '#ffffff',
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'translateY(-3px)';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
           }}
         >
           Explore My Work

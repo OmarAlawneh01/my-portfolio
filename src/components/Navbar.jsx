@@ -33,8 +33,9 @@ function Navbar() {
     <header 
       className="navbar" 
       style={{
-        backgroundColor: theme.surfaceLight,
-        boxShadow: isScrolled ? `0 4px 12px ${theme.shadow}` : 'none',
+        backgroundColor: isDarkMode ? 'rgba(18, 18, 18, 0.82)' : 'rgba(255, 255, 255, 0.82)',
+        boxShadow: isScrolled ? `0 4px 20px ${theme.shadow}` : 'none',
+        borderBottom: isScrolled ? `1px solid ${theme.border}` : '1px solid transparent',
       }}
     >
       <div className="navbar-container">

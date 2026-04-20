@@ -1,10 +1,12 @@
 import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { FaPhone, FaEnvelope } from 'react-icons/fa';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Contact.css';
 
 function Contact() {
   const { theme } = useTheme();
+  const [gridRef, gridVisible] = useScrollReveal(0.15);
 
   const contactItems = [
     {
@@ -37,14 +39,17 @@ function Contact() {
           Let's collaborate on an amazing project
         </p>
 
-        <div className="contact-grid">
+        <div
+          ref={gridRef}
+          className={`contact-grid stagger-grid ${gridVisible ? 'visible' : ''}`}
+        >
           {contactItems.map((item) => {
             const Icon = item.icon;
             return (
               <a
                 key={item.id}
                 href={item.href}
-                className="contact-card"
+                className="contact-card reveal"
                 style={{
                   backgroundColor: theme.surfaceLight,
                   boxShadow: `0 4px 12px ${theme.shadow}`,

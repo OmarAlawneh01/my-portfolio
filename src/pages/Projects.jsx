@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { projectsData } from '../constants/projects';
 import EnhancedVideo from '../components/EnhancedVideo';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Projects.css';
 
 function Projects() {
   const { theme } = useTheme();
   const [hoveredId, setHoveredId] = useState(null);
+  const [gridRef, gridVisible] = useScrollReveal(0.08);
 
   return (
-    <section 
-      className="projects-section" 
+    <section
+      className="projects-section"
       id="projects"
       style={{ backgroundColor: theme.secondary }}
     >
@@ -22,7 +24,10 @@ function Projects() {
           A selection of recent work with live demos
         </p>
 
-        <div className="projects-grid">
+        <div
+          ref={gridRef}
+          className={`projects-grid stagger-grid ${gridVisible ? 'visible' : ''}`}
+        >
           {projectsData.map((project) => (
             <article
               key={project.id}
@@ -31,9 +36,9 @@ function Projects() {
               onMouseLeave={() => setHoveredId(null)}
               style={{
                 backgroundColor: theme.surfaceLight,
-                boxShadow: hoveredId === project.id 
-                  ? `0 16px 32px ${theme.shadowHeavy}` 
-                  : `0 8px 16px ${theme.shadow}`,
+                boxShadow: hoveredId === project.id
+                  ? `0 20px 40px ${theme.shadowHeavy}`
+                  : `0 6px 20px ${theme.shadow}`,
               }}
             >
               <div className="project-header">

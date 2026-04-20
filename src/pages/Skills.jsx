@@ -1,14 +1,16 @@
 import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { skillsData } from '../constants/skills';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Skills.css';
 
 function Skills() {
   const { theme } = useTheme();
+  const [containerRef, isVisible] = useScrollReveal(0.1);
 
   return (
-    <section 
-      className="skills-section" 
+    <section
+      className="skills-section"
       id="skills"
       style={{ backgroundColor: theme.secondary }}
     >
@@ -20,11 +22,14 @@ function Skills() {
           Technologies and skills I work with
         </p>
 
-        <div className="skills-container">
+        <div
+          ref={containerRef}
+          className={`skills-container stagger-grid ${isVisible ? 'visible' : ''}`}
+        >
           {skillsData.map((category) => (
             <div
               key={category.category}
-              className="skill-category"
+              className="skill-category reveal"
               style={{
                 backgroundColor: theme.surface,
                 boxShadow: `0 4px 12px ${theme.shadow}`,
@@ -37,7 +42,7 @@ function Skills() {
                   <div key={skill.name} className="skill-item">
                     <div className="skill-header">
                       <span style={{ color: theme.text }}>{skill.name}</span>
-                      <span 
+                      <span
                         className="skill-level"
                         style={{ color: theme.primary }}
                       >
@@ -48,8 +53,7 @@ function Skills() {
                       <div
                         className="skill-progress"
                         style={{
-                          width: `${skill.level}%`,
-                          backgroundColor: theme.primary,
+                          width: isVisible ? `${skill.level}%` : '0%',
                         }}
                       ></div>
                     </div>

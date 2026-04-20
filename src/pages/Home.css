@@ -11,10 +11,47 @@
   overflow: hidden;
 }
 
+/* Decorative background blobs */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 8%;
+  right: 8%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(0, 102, 204, 0.13) 0%, transparent 68%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatBlob 9s ease-in-out infinite;
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 12%;
+  left: 4%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(0, 153, 255, 0.09) 0%, transparent 68%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatBlob 12s ease-in-out infinite reverse;
+  z-index: 0;
+}
+
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(24px, -18px) scale(1.04); }
+  66%       { transform: translate(-16px, 12px) scale(0.97); }
+}
+
 .hero-content {
   max-width: 700px;
   text-align: center;
   animation: fadeInUp 0.8s ease 0.2s backwards;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-greeting {
@@ -26,10 +63,10 @@
 
 .hero-name {
   font-size: 3.5rem;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 0.5rem;
   line-height: 1.2;
-  background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light, #3d8ee6) 60%, #00c6ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -54,19 +91,25 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 1rem 2rem;
+  padding: 1rem 2.2rem;
   font-size: 1rem;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-bottom: 3rem;
   animation: fadeInUp 0.8s ease 0.4s backwards;
+  box-shadow: 0 4px 18px rgba(0, 102, 204, 0.25);
 }
 
 .hero-cta:hover {
-  box-shadow: 0 12px 24px rgba(0, 102, 204, 0.3);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 28px rgba(0, 102, 204, 0.4);
+}
+
+.hero-cta:active {
+  transform: translateY(-1px) scale(1.01);
 }
 
 .hero-social {
@@ -98,8 +141,11 @@
 }
 
 .social-icon:hover {
-  transform: translateY(-4px) scale(1.1);
-  background-color: rgba(0, 102, 204, 0.1);
+  transform: translateY(-5px) scale(1.12);
+  background: linear-gradient(135deg, var(--primary), var(--primary-light, #3d8ee6));
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.35);
 }
 
 /* Scroll Indicator */
