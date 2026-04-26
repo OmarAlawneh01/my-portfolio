@@ -19,7 +19,7 @@ function Skills() {
           Skills & Expertise
         </h2>
         <p className="section-subtitle" style={{ color: theme.textSecondary }}>
-          Technologies and skills I work with
+          Technologies and tools I work with
         </p>
 
         <div
@@ -36,28 +36,19 @@ function Skills() {
               }}
             >
               <h3 style={{ color: theme.primary }}>{category.category}</h3>
-
-              <div className="skills-list">
+              <div className="skill-tags">
                 {category.skills.map((skill) => (
-                  <div key={skill.name} className="skill-item">
-                    <div className="skill-header">
-                      <span style={{ color: theme.text }}>{skill.name}</span>
-                      <span
-                        className="skill-level"
-                        style={{ color: theme.primary }}
-                      >
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="skill-bar" style={{ backgroundColor: `${theme.primary}20` }}>
-                      <div
-                        className="skill-progress"
-                        style={{
-                          width: isVisible ? `${skill.level}%` : '0%',
-                        }}
-                      ></div>
-                    </div>
-                  </div>
+                  <span
+                    key={skill}
+                    className="skill-tag"
+                    style={{
+                      color: theme.primary,
+                      backgroundColor: `${theme.primary}12`,
+                      borderColor: `${theme.primary}30`,
+                    }}
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>

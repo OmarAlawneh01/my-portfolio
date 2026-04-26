@@ -52,11 +52,12 @@ function Home() {
           Hey there👋
         </h1>
         <h2 className="hero-name">I'm Omar Alawneh</h2>
-        <h3 className="hero-title">Full-Stack Web Developer</h3>
+        <h3 className="hero-title">Full-Stack Developer & QA Engineer</h3>
 
         <p className="hero-description" style={{ color: theme.textSecondary }}>
-          I build beautiful, responsive web applications from concept to production.
-          Specialized in modern frontend frameworks and scalable backend systems.
+          I build responsive, production-ready web applications and ensure their quality
+          through rigorous testing. Specialized in modern frontend/backend development and
+          software testing methodologies — from manual testing to automated test suites.
         </p>
 
         {/* CTA Button */}

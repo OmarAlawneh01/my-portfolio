@@ -25,71 +25,78 @@
   transition: color 0.3s ease;
 }
 
-.services-grid {
+/* Single "What I Do" card */
+.what-i-do-card {
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(0, 102, 204, 0.12);
+  border-top: 3px solid var(--primary);
+  transition: box-shadow 0.35s ease;
+}
+
+.what-i-do-card:hover {
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.13) !important;
+}
+
+.what-i-do-split {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  margin-top: 2rem;
 }
 
-.service-card {
-  padding: 2.5rem 2rem;
-  border-radius: 16px;
-  text-align: center;
-  transition: all 0.35s ease;
-  border: 1px solid rgba(0, 102, 204, 0.1);
-  border-top: 3px solid transparent;
-  position: relative;
-  overflow: hidden;
+.what-i-do-col {
+  border-radius: 14px;
+  border: 1px solid;
+  padding: 1.75rem 2rem;
+  transition: all 0.3s ease;
 }
 
-.service-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0, 102, 204, 0.04), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
+.what-i-do-col:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 102, 204, 0.1);
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.13) !important;
-  border-top-color: var(--primary);
-}
-
-.service-card:hover::before {
-  opacity: 1;
-}
-
-.service-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(0, 102, 204, 0.12), rgba(0, 153, 255, 0.07));
+.what-i-do-col-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.25rem;
-  transition: all 0.35s ease;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 102, 204, 0.15);
 }
 
-.service-card:hover .service-icon {
-  transform: scale(1.12) rotate(6deg);
-  background: linear-gradient(135deg, rgba(0, 102, 204, 0.2), rgba(0, 153, 255, 0.14));
+.what-i-do-col-icon {
+  display: flex;
+  align-items: center;
 }
 
-.service-card h3 {
-  font-size: 1.5rem;
+.what-i-do-col-header h3 {
+  font-size: 1.15rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
-.service-card p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+.what-i-do-list {
+  list-style: none;
+  padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.what-i-do-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.what-i-do-bullet {
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+  font-size: 0.8rem;
 }
 
 /* Responsive */
@@ -107,12 +114,16 @@
     margin-bottom: 2rem;
   }
 
-  .services-grid {
+  .what-i-do-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .what-i-do-split {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
-  .service-card {
-    padding: 2rem 1.5rem;
+  .what-i-do-col {
+    padding: 1.5rem;
   }
 }
