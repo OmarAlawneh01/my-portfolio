@@ -16,7 +16,7 @@ export const projectsData = [
     tags: ['React', 'E-commerce', 'Payment Integration'],
     repoUrl: 'https://github.com/OmarAlawneh01/Online-Store-System-',
     demoUrl: '',
-    videoSrc: 'https://res.cloudinary.com/dmdbcrae4/video/upload/v1770822036/online_store_video_mkbaqx.mp4',
+    videoSrc: 'https://player.cloudinary.com/embed/?cloud_name=dmdbcrae4&public_id=online_store_video_mkbaqx',
   },
   {
     id: 3,
