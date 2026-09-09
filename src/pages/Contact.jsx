@@ -1,75 +1,68 @@
 import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
-import { FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FiArrowUpRight, FiMapPin, FiPhone } from 'react-icons/fi';
+import { PROFILE, RESUME_URL } from '../constants/profile';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Contact.css';
 
-function Contact() {
-  const { theme } = useTheme();
-  const [gridRef, gridVisible] = useScrollReveal(0.15);
+const socials = [
+  { icon: FaLinkedin, url: 'https://www.linkedin.com/in/omar-alawneh-1a532124b/', label: 'LinkedIn' },
+  { icon: FaGithub, url: 'https://github.com/omaralawneh01', label: 'GitHub' },
+];
 
-  const contactItems = [
-    {
-      id: 1,
-      icon: FaEnvelope,
-      label: 'Email',
-      value: 'omaralawneh01@gmail.com',
-      href: 'mailto:omaralawneh01@gmail.com',
-    },
-    {
-      id: 2,
-      icon: FaPhone,
-      label: 'Phone',
-      value: '+962 792 545 136',
-      href: 'tel:+962792545136',
-    },
-  ];
+function Contact() {
+  const [ref, visible] = useScrollReveal();
 
   return (
-    <section
-      className="contact-section"
-      id="contact"
-      style={{ backgroundColor: theme.secondary }}
-    >
-      <div className="section-container">
-        <h2 className="section-title" style={{ color: theme.primary }}>
-          Get In Touch
-        </h2>
-        <p className="section-subtitle" style={{ color: theme.textSecondary }}>
-          Let's collaborate on an amazing project
+    <section className="section section--invert contact" id="contact">
+      <div ref={ref} className={`shell contact-inner reveal ${visible ? 'visible' : ''}`}>
+        <p className="section-index">07 / Contact</p>
+        <h2 className="contact-title">Let's talk about quality.</h2>
+        <p className="contact-lede">
+          Have a role, a project, or a question about testing? Email is the fastest way to reach me.
         </p>
 
-        <div
-          ref={gridRef}
-          className={`contact-grid stagger-grid ${gridVisible ? 'visible' : ''}`}
-        >
-          {contactItems.map((item) => {
-            const Icon = item.icon;
+        <a className="contact-email" href={`mailto:${PROFILE.email}`}>
+          <span>{PROFILE.email}</span>
+          <FiArrowUpRight size={26} />
+        </a>
+
+        <div className="contact-meta">
+          <a className="contact-meta-item" href={PROFILE.phoneHref}>
+            <FiPhone size={15} />
+            {PROFILE.phone}
+          </a>
+          <span className="contact-meta-item">
+            <FiMapPin size={15} />
+            {PROFILE.location}
+          </span>
+        </div>
+
+        <div className="contact-links">
+          {socials.map((social) => {
+            const Icon = social.icon;
             return (
               <a
-                key={item.id}
-                href={item.href}
-                className="contact-card reveal"
-                style={{
-                  backgroundColor: theme.surfaceLight,
-                  boxShadow: `0 4px 12px ${theme.shadow}`,
-                }}
+                key={social.label}
+                className="contact-social"
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <div className="contact-icon" style={{ color: theme.primary }}>
-                  <Icon size={40} />
-                </div>
-                <h3 style={{ color: theme.text }}>{item.label}</h3>
-                <p style={{ color: theme.textSecondary }}>{item.value}</p>
-                <span className="contact-arrow">→</span>
+                <Icon size={16} />
+                {social.label}
               </a>
             );
           })}
-        </div>
-
-        <div className="contact-cta">
-          <p style={{ color: theme.textSecondary }}>
-            Or just say hello on any of my social media platforms
-          </p>
+          <a
+            className="contact-social"
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FiArrowUpRight size={16} />
+            Résumé
+          </a>
         </div>
       </div>
     </section>

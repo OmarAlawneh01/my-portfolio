@@ -1,129 +1,176 @@
-/* Services Section Styles */
+/* ============================================
+   PRACTICE (QA + development capabilities)
+   ============================================ */
 
-.services-section {
-  padding: 6rem 2rem;
-  transition: all 0.3s ease;
-}
-
-.section-container {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 0.5rem;
-  transition: color 0.3s ease;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  transition: color 0.3s ease;
-}
-
-/* Single "What I Do" card */
-.what-i-do-card {
-  border-radius: 20px;
-  padding: 3rem;
-  border: 1px solid rgba(0, 102, 204, 0.12);
-  border-top: 3px solid var(--primary);
-  transition: box-shadow 0.35s ease;
-}
-
-.what-i-do-card:hover {
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.13) !important;
-}
-
-.what-i-do-split {
+.practice-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
 }
 
-.what-i-do-col {
-  border-radius: 14px;
-  border: 1px solid;
-  padding: 1.75rem 2rem;
-  transition: all 0.3s ease;
-}
-
-.what-i-do-col:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 102, 204, 0.1);
-}
-
-.what-i-do-col-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(0, 102, 204, 0.15);
-}
-
-.what-i-do-col-icon {
-  display: flex;
-  align-items: center;
-}
-
-.what-i-do-col-header h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin: 0;
-}
-
-.what-i-do-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.practice-card {
+  position: relative;
+  padding: 1.6rem 1.5rem 1.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.7rem;
+  overflow: hidden;
 }
 
-.what-i-do-list li {
+/* Accent rule sweeps across the top edge on hover */
+.practice-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+
+.practice-card:hover::before {
+  transform: scaleX(1);
+}
+
+.practice-card:hover {
+  border-color: var(--accent-line);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+.practice-card:hover .practice-card-icon {
+  background: var(--accent);
+  color: var(--accent-on);
+  transform: scale(1.06);
+}
+
+.practice-card-top {
   display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 0.93rem;
-  line-height: 1.5;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
 }
 
-.what-i-do-bullet {
+.practice-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  color: var(--accent);
   flex-shrink: 0;
-  margin-top: 0.05rem;
-  font-size: 0.8rem;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .services-section {
-    padding: 4rem 1rem;
+.practice-card-index {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+}
+
+.practice-card h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.012em;
+}
+
+.practice-card p {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+/* ── Development band ── */
+
+.practice-dev {
+  margin-top: 1.25rem;
+  padding: 1.75rem 1.75rem 1.85rem;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
+}
+
+.practice-dev-head {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.practice-dev-head h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.practice-dev-head p {
+  font-size: var(--text-sm);
+  color: var(--ink-3);
+  line-height: 1.55;
+}
+
+.practice-dev-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 1.75rem;
+}
+
+.practice-dev-list li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.practice-dev-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 980px) {
+  .practice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .what-i-do-card {
-    padding: 2rem 1.5rem;
-  }
-
-  .what-i-do-split {
+  .practice-dev {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+}
 
-  .what-i-do-col {
-    padding: 1.5rem;
+@media (max-width: 640px) {
+  .practice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-dev-list {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-dev {
+    padding: 1.5rem 1.35rem;
+  }
+
+  .practice-card {
+    padding: 1.4rem 1.35rem 1.5rem;
   }
 }

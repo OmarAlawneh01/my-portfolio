@@ -1,54 +1,30 @@
 import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
 import { skillsData } from '../constants/skills';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Skills.css';
 
 function Skills() {
-  const { theme } = useTheme();
-  const [containerRef, isVisible] = useScrollReveal(0.1);
+  const [ref, visible] = useScrollReveal();
+  const [headRef, headVisible] = useScrollReveal();
 
   return (
-    <section
-      className="skills-section"
-      id="skills"
-      style={{ backgroundColor: theme.secondary }}
-    >
-      <div className="section-container">
-        <h2 className="section-title" style={{ color: theme.primary }}>
-          Skills & Expertise
-        </h2>
-        <p className="section-subtitle" style={{ color: theme.textSecondary }}>
-          Technologies and tools I work with
-        </p>
+    <section className="section" id="skills">
+      <div className="shell">
+        <header ref={headRef} className={`section-head reveal ${headVisible ? 'visible' : ''}`}>
+          <p className="section-index">05 / Skills</p>
+          <h2 className="section-title">Tools &amp; technologies</h2>
+          <p className="section-lede">
+            What I build with, what I test with, and how I work.
+          </p>
+        </header>
 
-        <div
-          ref={containerRef}
-          className={`skills-container stagger-grid ${isVisible ? 'visible' : ''}`}
-        >
-          {skillsData.map((category) => (
-            <div
-              key={category.category}
-              className="skill-category reveal"
-              style={{
-                backgroundColor: theme.surface,
-                boxShadow: `0 4px 12px ${theme.shadow}`,
-              }}
-            >
-              <h3 style={{ color: theme.primary }}>{category.category}</h3>
-              <div className="skill-tags">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="skill-tag"
-                    style={{
-                      color: theme.primary,
-                      backgroundColor: `${theme.primary}12`,
-                      borderColor: `${theme.primary}30`,
-                    }}
-                  >
-                    {skill}
-                  </span>
+        <div ref={ref} className={`skills-list stagger ${visible ? 'visible' : ''}`}>
+          {skillsData.map((group) => (
+            <div className="skills-row reveal" key={group.category}>
+              <p className="skills-category">{group.category}</p>
+              <div className="skills-chips">
+                {group.skills.map((skill) => (
+                  <span className="chip" key={skill}>{skill}</span>
                 ))}
               </div>
             </div>

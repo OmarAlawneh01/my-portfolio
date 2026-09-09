@@ -1,103 +1,141 @@
 import React, { useState, useEffect } from 'react';
+import { FiSun, FiMoon, FiMenu, FiX, FiArrowUpRight } from 'react-icons/fi';
 import { useTheme } from '../contexts/ThemeContext';
+import { RESUME_URL } from '../constants/profile';
 import './Navbar.css';
 
+const navItems = [
+  { label: 'About', id: 'about' },
+  { label: 'Experience', id: 'experience' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'Skills', id: 'skills' },
+  { label: 'Education', id: 'education' },
+  { label: 'Contact', id: 'contact' },
+];
+
 function Navbar() {
-  const { isDarkMode, toggleTheme, theme } = useTheme();
+  const { isDarkMode, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeId, setActiveId] = useState('');
 
-  // Handle scroll event for navbar shadow
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { label: 'Services', href: '#services' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Contact', href: '#contact' },
-  ];
+  // Scroll spy: highlight the section currently crossing the upper third
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (visible) setActiveId(visible.target.id);
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
 
-  const handleNavClick = (href) => {
+    navItems.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  // Lock body scroll while the mobile sheet is open
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isMenuOpen]);
+
+  const handleNavClick = (id) => {
     setIsMenuOpen(false);
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <header 
-      className="navbar" 
-      style={{
-        backgroundColor: isDarkMode ? 'rgba(18, 18, 18, 0.82)' : 'rgba(255, 255, 255, 0.82)',
-        boxShadow: isScrolled ? `0 4px 20px ${theme.shadow}` : 'none',
-        borderBottom: isScrolled ? `1px solid ${theme.border}` : '1px solid transparent',
-      }}
-    >
-      <div className="navbar-container">
-        {/* Logo */}
-        <a href="#" className="logo" style={{ color: theme.primary }}>
-          OMAR
+    <header className={`navbar ${isScrolled ? 'is-scrolled' : ''}`}>
+      <div className="navbar-inner shell">
+        <a
+          href="#top"
+          className="navbar-logo"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
+          Omar Alawneh
+          <span className="navbar-logo-role">QA &amp; Software Engineering</span>
         </a>
 
-        {/* Navigation */}
-        <nav className={`navigation ${isMenuOpen ? 'active' : ''}`}>
+        <nav className="navbar-nav" aria-label="Section navigation">
           {navItems.map((item) => (
             <button
-              key={item.href}
-              className="nav-link"
-              onClick={() => handleNavClick(item.href)}
-              style={{ color: theme.text }}
+              key={item.id}
+              className={`navbar-link ${activeId === item.id ? 'is-active' : ''}`}
+              onClick={() => handleNavClick(item.id)}
             >
               {item.label}
             </button>
           ))}
         </nav>
 
-        {/* Right Actions */}
         <div className="navbar-actions">
-          {/* CV Download */}
           <a
-            href="https://docs.google.com/document/d/11YUUf3KDXD3HevVijZSrK_AXP5m4P5P5fKeii5bT40o/edit?usp=sharing"
+            href={RESUME_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="cv-link"
-            style={{
-              color: theme.primary,
-              borderColor: theme.primary,
-            }}
+            className="navbar-resume"
           >
-            Resume
+            Résumé
+            <FiArrowUpRight size={14} />
           </a>
 
-          {/* Dark Mode Toggle */}
           <button
-            className="theme-toggle"
+            className="icon-btn"
             onClick={toggleTheme}
-            style={{
-              color: theme.primary,
-              borderColor: theme.primary,
-            }}
-            title="Toggle dark mode"
+            aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
           >
-            {isDarkMode ? '☀️' : '🌙'}
+            {isDarkMode ? <FiSun size={17} /> : <FiMoon size={17} />}
           </button>
 
-          {/* Mobile Menu Toggle */}
           <button
-            className="menu-toggle"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            style={{ color: theme.primary }}
+            className="icon-btn navbar-menu-btn"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            {isMenuOpen ? <FiX size={18} /> : <FiMenu size={18} />}
           </button>
         </div>
+      </div>
+
+      <div className={`navbar-sheet ${isMenuOpen ? 'is-open' : ''}`}>
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            className={`navbar-sheet-link ${activeId === item.id ? 'is-active' : ''}`}
+            onClick={() => handleNavClick(item.id)}
+          >
+            <span className="navbar-sheet-index">
+              {String(navItems.indexOf(item) + 1).padStart(2, '0')}
+            </span>
+            {item.label}
+          </button>
+        ))}
+        <a
+          href={RESUME_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="navbar-sheet-link"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <span className="navbar-sheet-index">↗</span>
+          Résumé
+        </a>
       </div>
     </header>
   );

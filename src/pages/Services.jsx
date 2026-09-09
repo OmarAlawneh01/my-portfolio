@@ -1,98 +1,69 @@
 import React from 'react';
-import { FaCode, FaVial } from 'react-icons/fa';
-import { useTheme } from '../contexts/ThemeContext';
+import { FiCode } from 'react-icons/fi';
+import { qaServicesData } from '../constants/services';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Services.css';
 
 const devCapabilities = [
   'Full-stack web applications (React, Node.js, Express)',
   'RESTful API design & database architecture',
+  'Authentication systems & CRUD operations',
+  'PostgreSQL, MySQL & MongoDB data modelling',
   'Responsive, accessible UI with modern CSS',
-  'PostgreSQL, MongoDB & database design',
-  'Performance optimization & deployment',
-];
-
-const qaCapabilities = [
-  'Manual testing — black-box, white-box & exploratory',
-  'Test case design, plans & defect reporting (Jira, Azure DevOps)',
-  'API testing with Postman (REST & SOAP)',
-  'Automation with Selenium + Java + TestNG & Cypress',
-  'Performance & load testing with Apache JMeter',
 ];
 
 function Services() {
-  const { theme } = useTheme();
-  const [cardRef, cardVisible] = useScrollReveal(0.15);
+  const [qaRef, qaVisible] = useScrollReveal();
+  const [devRef, devVisible] = useScrollReveal();
+  const [headRef, headVisible] = useScrollReveal();
 
   return (
-    <section
-      className="services-section"
-      id="services"
-      style={{ backgroundColor: theme.secondary }}
-    >
-      <div className="section-container">
-        <h2 className="section-title" style={{ color: theme.primary }}>
-          What I Do
-        </h2>
-        <p className="section-subtitle" style={{ color: theme.textSecondary }}>
-          End-to-end expertise — from building the product to making sure it works
-        </p>
+    <section className="section section--alt" id="practice">
+      <div className="shell">
+        <header ref={headRef} className={`section-head reveal ${headVisible ? 'visible' : ''}`}>
+          <p className="section-index">02 / Practice</p>
+          <h2 className="section-title">Quality assurance, end to end</h2>
+          <p className="section-lede">
+            The testing disciplines I apply on enterprise platforms — from test design through
+            automation, performance, and defect management.
+          </p>
+        </header>
 
-        <div
-          ref={cardRef}
-          className={`what-i-do-card reveal ${cardVisible ? 'visible' : ''}`}
-          style={{
-            backgroundColor: theme.surfaceLight,
-            boxShadow: `0 4px 24px ${theme.shadow}`,
-          }}
-        >
-          <div className="what-i-do-split">
-            <div
-              className="what-i-do-col"
-              style={{
-                borderColor: `${theme.primary}25`,
-                backgroundColor: `${theme.primary}06`,
-              }}
-            >
-              <div className="what-i-do-col-header">
-                <span className="what-i-do-col-icon" style={{ color: theme.primary }}>
-                  <FaCode size={20} />
-                </span>
-                <h3 style={{ color: theme.primary }}>Full-Stack Development</h3>
-              </div>
-              <ul className="what-i-do-list">
-                {devCapabilities.map((item) => (
-                  <li key={item} style={{ color: theme.textSecondary }}>
-                    <span className="what-i-do-bullet" style={{ color: theme.primary }}>▸</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div ref={qaRef} className={`practice-grid stagger ${qaVisible ? 'visible' : ''}`}>
+          {qaServicesData.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <article className="practice-card panel reveal" key={item.id}>
+                <div className="practice-card-top">
+                  <span className="practice-card-icon">
+                    <Icon size={17} />
+                  </span>
+                  <span className="practice-card-index">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            );
+          })}
+        </div>
 
-            <div
-              className="what-i-do-col"
-              style={{
-                borderColor: `${theme.primary}25`,
-                backgroundColor: `${theme.primary}06`,
-              }}
-            >
-              <div className="what-i-do-col-header">
-                <span className="what-i-do-col-icon" style={{ color: theme.primary }}>
-                  <FaVial size={20} />
-                </span>
-                <h3 style={{ color: theme.primary }}>Quality Assurance</h3>
-              </div>
-              <ul className="what-i-do-list">
-                {qaCapabilities.map((item) => (
-                  <li key={item} style={{ color: theme.textSecondary }}>
-                    <span className="what-i-do-bullet" style={{ color: theme.primary }}>▸</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+        <div ref={devRef} className={`practice-dev panel reveal ${devVisible ? 'visible' : ''}`}>
+          <div className="practice-dev-head">
+            <span className="practice-card-icon">
+              <FiCode size={17} />
+            </span>
+            <div>
+              <h3>Software development</h3>
+              <p>The engineering background behind the testing.</p>
             </div>
           </div>
+          <ul className="practice-dev-list">
+            {devCapabilities.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

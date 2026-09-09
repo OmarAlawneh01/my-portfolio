@@ -1,113 +1,103 @@
-import React, { useEffect, useState } from 'react';
-import { FaFacebook, FaLinkedin, FaGithub, FaInstagram, FaArrowDown } from 'react-icons/fa';
-import { useTheme } from '../contexts/ThemeContext';
+import React from 'react';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FiArrowDown, FiArrowUpRight, FiMail } from 'react-icons/fi';
+import mypic from '../assets/images/mypic.jpg';
+import { RESUME_URL, PROFILE } from '../constants/profile';
 import './Home.css';
 
+const socialLinks = [
+  { icon: FaGithub, url: 'https://github.com/omaralawneh01', label: 'GitHub' },
+  { icon: FaLinkedin, url: 'https://www.linkedin.com/in/omar-alawneh-1a532124b/', label: 'LinkedIn' },
+  { icon: FiMail, url: `mailto:${PROFILE.email}`, label: 'Email' },
+];
+
+const facts = [
+  { label: 'Role', value: 'QA Specialist' },
+  { label: 'Company', value: 'Dalil Information Technology' },
+  { label: 'Based in', value: PROFILE.location },
+  { label: 'Focus', value: 'Functional · API · Performance · Security' },
+];
+
+function scrollTo(selector) {
+  document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
+}
+
 function Home() {
-  const { theme } = useTheme();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const socialLinks = [
-    {
-      icon: FaGithub,
-      url: 'https://github.com/omaralawneh01',
-      label: 'GitHub',
-    },
-    {
-      icon: FaLinkedin,
-      url: 'https://www.linkedin.com/in/omar-alawneh-1a532124b/',
-      label: 'LinkedIn',
-    },
-    {
-      icon: FaInstagram,
-      url: 'https://www.instagram.com/omar_alawneh01/',
-      label: 'Instagram',
-    },
-    {
-      icon: FaFacebook,
-      url: 'https://www.facebook.com/omar.alawneh.549',
-      label: 'Facebook',
-    },
-  ];
-
-  const handleScrollDown = () => {
-    const servicesSection = document.querySelector('#services');
-    servicesSection?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <section 
-      className="hero"
-      style={{
-        backgroundColor: theme.background,
-        color: theme.text,
-      }}
-    >
-      <div className={`hero-content ${isVisible ? 'visible' : ''}`}>
-        <h1 className="hero-greeting" style={{ color: theme.primary }}>
-          Hey there👋
-        </h1>
-        <h2 className="hero-name">I'm Omar Alawneh</h2>
-        <h3 className="hero-title">Full-Stack Developer & QA Engineer</h3>
-
-        <p className="hero-description" style={{ color: theme.textSecondary }}>
-          I build responsive, production-ready web applications and ensure their quality
-          through rigorous testing. Specialized in modern frontend/backend development and
-          software testing methodologies — from manual testing to automated test suites.
-        </p>
-
-        {/* CTA Button */}
-        <button
-          className="hero-cta"
-          onClick={handleScrollDown}
-          style={{
-            background: 'linear-gradient(135deg, var(--primary), var(--primary-light, #3d8ee6))',
-            color: '#ffffff',
-          }}
-        >
-          Explore My Work
-          <FaArrowDown size={16} style={{ marginLeft: '8px' }} />
-        </button>
-
-        {/* Social Links */}
-        <div className="hero-social">
-          <p className="social-label" style={{ color: theme.textSecondary }}>
-            Connect with me on social media
+    <section className="hero" id="top">
+      <div className="hero-grid shell">
+        <div className="hero-lead">
+          <p className="hero-eyebrow">
+            <span className="status-dot" aria-hidden="true" />
+            QA Specialist · Dalil Information Technology
           </p>
-          <div className="social-icons-container">
+
+          <h1 className="hero-title">
+            I build software — then I break it on purpose.
+          </h1>
+
+          <p className="hero-lede">
+            I'm <strong>Omar Alawneh</strong>, a Software Engineering graduate working in QA. I test
+            enterprise web platforms across functional, API, performance, and security testing —
+            bringing a developer's understanding of how systems are built to finding where they fail.
+          </p>
+
+          <div className="hero-actions">
+            <button className="btn btn--primary" onClick={() => scrollTo('#projects')}>
+              View my work
+              <FiArrowDown size={16} />
+            </button>
+            <button className="btn btn--ghost" onClick={() => scrollTo('#contact')}>
+              Get in touch
+            </button>
+            <a className="hero-resume" href={RESUME_URL} target="_blank" rel="noopener noreferrer">
+              Résumé
+              <FiArrowUpRight size={15} />
+            </a>
+          </div>
+
+          <div className="hero-social">
             {socialLinks.map((link) => {
               const Icon = link.icon;
               return (
                 <a
                   key={link.label}
                   href={link.url}
-                  target="_blank"
+                  target={link.url.startsWith('mailto:') ? undefined : '_blank'}
                   rel="noopener noreferrer"
-                  className="social-icon"
-                  title={link.label}
-                  style={{
-                    color: theme.primary,
-                    borderColor: theme.primary,
-                  }}
+                  className="icon-btn"
+                  aria-label={link.label}
                 >
-                  <Icon size={20} />
+                  <Icon size={17} />
                 </a>
               );
             })}
           </div>
         </div>
+
+        <aside className="hero-card panel">
+          <div className="hero-card-photo">
+            <img src={mypic} alt="Omar Alawneh" width="420" height="480" />
+          </div>
+          <dl className="hero-facts">
+            {facts.map((fact) => (
+              <div className="hero-fact" key={fact.label}>
+                <dt>{fact.label}</dt>
+                <dd>{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </aside>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="scroll-indicator">
-        <div className="scroll-arrow" style={{ color: theme.primary }}>
-          <FaArrowDown size={20} />
-        </div>
-      </div>
+      <button
+        className="hero-scroll"
+        onClick={() => scrollTo('#about')}
+        aria-label="Scroll to About section"
+      >
+        <span>Scroll</span>
+        <FiArrowDown size={14} />
+      </button>
     </section>
   );
 }

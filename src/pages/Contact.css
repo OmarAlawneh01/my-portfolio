@@ -1,131 +1,125 @@
-/* Contact Section Styles */
+/* ============================================
+   CONTACT
+   ============================================ */
 
-.contact-section {
-  padding: 6rem 2rem;
-  transition: all 0.3s ease;
+.contact {
+  padding-bottom: clamp(5rem, 10vw, 8rem);
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+.contact-inner {
+  max-width: 880px;
 }
 
-.contact-card {
-  border-radius: 16px;
-  padding: 2.5rem 2rem;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.35s ease;
-  border: 1px solid rgba(0, 102, 204, 0.1);
-  border-top: 3px solid transparent;
-  display: flex;
-  flex-direction: column;
+.contact-title {
+  font-size: var(--text-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+.contact-lede {
+  font-size: var(--text-xl);
+  line-height: 1.65;
+  color: var(--ink-3);
+  max-width: 52ch;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* ── Email as the primary action ── */
+
+.contact-email {
+  display: inline-flex;
   align-items: center;
   gap: 1rem;
-  position: relative;
-  overflow: hidden;
+  font-size: clamp(1.25rem, 3.2vw, 2.1rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--hairline-strong);
+  margin-bottom: 2.5rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
 }
 
-.contact-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(160deg, rgba(0, 102, 204, 0.05), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
+.contact-email:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
-.contact-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.14) !important;
-  border-top-color: var(--primary);
+.contact-email svg {
+  flex-shrink: 0;
+  transition: transform var(--dur) var(--ease);
 }
 
-.contact-card:hover::before {
-  opacity: 1;
+.contact-email:hover svg {
+  transform: translate(4px, -4px);
 }
 
-.contact-icon {
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(0, 102, 204, 0.12), rgba(0, 153, 255, 0.07));
+/* ── Secondary details ── */
+
+.contact-meta {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.contact-meta-item {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.35s ease;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--ink-3);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
 }
 
-.contact-card:hover .contact-icon {
-  transform: scale(1.12) rotate(-8deg);
-  background: linear-gradient(135deg, rgba(0, 102, 204, 0.22), rgba(0, 153, 255, 0.15));
+a.contact-meta-item:hover {
+  color: var(--accent);
 }
 
-.contact-card h3 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin: 0.5rem 0 0 0;
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
 
-.contact-card p {
-  font-size: 0.95rem;
-  margin: 0;
-  transition: transform 0.3s ease;
+.contact-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  text-decoration: none;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-full);
+  padding: 0.6rem 1.05rem;
+  min-height: 42px;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease);
 }
 
-.contact-card:hover p {
-  transform: scale(1.05);
+.contact-social:hover {
+  color: var(--accent);
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
 }
 
-.contact-arrow {
-  position: absolute;
-  right: 1.5rem;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.contact-card:hover .contact-arrow {
-  opacity: 1;
-  right: 1rem;
-}
-
-.contact-cta {
-  text-align: center;
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(0, 102, 204, 0.1);
-  animation: fadeInUp 0.8s ease 0.4s backwards;
-}
-
-.contact-cta p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .contact-section {
-    padding: 4rem 1rem;
+@media (max-width: 560px) {
+  .contact-email {
+    gap: 0.65rem;
+    padding-bottom: 0.7rem;
   }
 
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .contact-card {
-    padding: 2rem 1.5rem;
-  }
-
-  .contact-card p {
-    font-size: 0.9rem;
-  }
-
-  .contact-cta {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+  .contact-meta {
+    gap: 0.6rem 1.25rem;
   }
 }

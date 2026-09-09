@@ -1,0 +1,117 @@
+/* ============================================
+   EDUCATION & CERTIFICATIONS
+   ============================================ */
+
+.education-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.education-block {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.9rem 1.9rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.education-block:hover {
+  border-color: var(--accent-line);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.education-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* ── Degree ── */
+
+.education-degree h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.018em;
+  margin-bottom: 0.5rem;
+}
+
+.education-institution {
+  font-size: var(--text-base);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.education-period {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+
+/* ── Certifications ── */
+
+.certifications {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.certifications li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.certifications li:last-child {
+  border-bottom: none;
+}
+
+.certification-name {
+  font-size: var(--text-base);
+  color: var(--ink);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.certification-issuer {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .certifications li {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .certification-name {
+    font-size: var(--text-sm);
+  }
+}

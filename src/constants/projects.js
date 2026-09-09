@@ -2,8 +2,8 @@
 export const projectsData = [
   {
     id: 1,
-    name: 'JetSetGo',
-    description: 'Travel booking experience with clear, intuitive flows and engaging visuals.',
+    name: 'JetSetGo — Travel Suggestion Platform',
+    description: 'Personalized travel planning platform with AI-assisted suggestions and real-time third-party API data.',
     tags: ['React', 'Node.js', 'MongoDB'],
     repoUrl: 'https://github.com/OmarAlawneh01/JetSetGo.git',
     demoUrl: '',
@@ -11,8 +11,8 @@ export const projectsData = [
   },
   {
     id: 2,
-    name: 'Online Store',
-    description: 'Responsive storefront layout with a focus on clean product discovery and checkout.',
+    name: 'Online Store System',
+    description: 'E-commerce system with secure online purchasing and admin product/user management.',
     tags: ['React', 'E-commerce', 'Payment Integration'],
     repoUrl: 'https://github.com/OmarAlawneh01/Online-Store-System-',
     demoUrl: '',
@@ -21,7 +21,7 @@ export const projectsData = [
   {
     id: 3,
     name: 'Task Management System',
-    description: 'Task planning and tracking system built for smooth, collaborative workflows.',
+    description: 'Professional to-do list application for planning and tracking tasks.',
     tags: ['React', 'Real-time', 'Database'],
     repoUrl: 'https://github.com/OmarAlawneh01/Task-Management-system-',
     demoUrl: '',
@@ -29,9 +29,9 @@ export const projectsData = [
   },
   {
     id: 4,
-    name: 'Games Website',
-    description: 'A fast, modern gaming portal with smooth navigation and bold visuals.',
-    tags: ['React', 'Game Integration', 'UI/UX'],
+    name: 'Blogs Website',
+    description: 'Blog management system for creating, editing, and deleting posts.',
+    tags: ['React', 'CRUD', 'UI/UX'],
     repoUrl: 'https://github.com/OmarAlawneh01/Blog-project',
     demoUrl: '',
     videoSrc: 'https://res.cloudinary.com/dmdbcrae4/video/upload/v1770822256/video_for_the_game_website_aea1lw.mp4',

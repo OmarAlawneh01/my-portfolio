@@ -1,74 +1,101 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 /* ============================================
-   THEME CONFIGURATION
+   DESIGN TOKENS
    ============================================ */
 
-/* Light Theme (Default) */
 :root,
 [data-theme='light'] {
-  /* Colors */
-  --primary: #0066cc;
-  --primary-dark: #004499;
-  --primary-light: #3d8ee6;
-  --secondary: #f0f8ff;
-  --background: #f9f9f9;
+  --canvas: #f7fbff;
+  --canvas-alt: #eaf4ff;
   --surface: #ffffff;
-  --surface-dark: #f5f5f5;
-  --text: #1a1a1a;
-  --text-secondary: #4a4a4a;
-  --text-tertiary: #6a6a6a;
-  --border: #d6eaff;
-  --border-light: #e8f2ff;
-  
-  /* Effects */
-  --shadow: rgba(0, 0, 0, 0.08);
-  --shadow-md: rgba(0, 0, 0, 0.12);
-  --shadow-lg: rgba(0, 0, 0, 0.15);
-  
-  /* Styling */
-  --border-radius: 12px;
-  --transition: all 0.3s ease;
-  
-  /* Color scheme */
+  --surface-2: #f0f8ff;
+
+  --hairline: #d6eaff;
+  --hairline-strong: #b7d9fb;
+
+  --ink: #0f1c2e;
+  --ink-2: #33455e;
+  --ink-3: #4d6180;
+
+  --accent: #0066cc;
+  --accent-hover: #004499;
+  --accent-on: #ffffff;
+  --accent-soft: rgba(0, 102, 204, 0.08);
+  --accent-line: rgba(0, 102, 204, 0.3);
+
+  --signal: #16a34a;
+
+  --shadow-sm: 0 1px 2px rgba(11, 45, 84, 0.06), 0 2px 6px rgba(11, 45, 84, 0.05);
+  --shadow-md: 0 2px 6px rgba(11, 45, 84, 0.07), 0 8px 20px rgba(11, 45, 84, 0.09);
+  --shadow-lg: 0 6px 16px rgba(11, 45, 84, 0.09), 0 20px 44px rgba(11, 45, 84, 0.14);
+  --shadow-xl: 0 10px 24px rgba(11, 45, 84, 0.11), 0 32px 70px rgba(11, 45, 84, 0.19);
+
   color-scheme: light;
 }
 
-/* Dark Theme */
 [data-theme='dark'] {
-  /* Colors */
-  --primary: #90caf9;
-  --primary-dark: #64b5f6;
-  --primary-light: #b3d9ff;
-  --secondary: #1e1e1e;
-  --background: #121212;
+  --canvas: #101010;
+  --canvas-alt: #161616;
   --surface: #1e1e1e;
-  --surface-dark: #252525;
-  --text: #f0f0f0;
-  --text-secondary: #cfcfcf;
-  --text-tertiary: #a0a0a0;
-  --border: #333333;
-  --border-light: #2a2a2a;
-  
-  /* Effects */
-  --shadow: rgba(255, 255, 255, 0.05);
-  --shadow-md: rgba(255, 255, 255, 0.08);
-  --shadow-lg: rgba(255, 255, 255, 0.1);
-  
-  /* Styling */
-  --border-radius: 12px;
-  --transition: all 0.3s ease;
-  
-  /* Color scheme */
+  --surface-2: #252525;
+
+  --hairline: #303030;
+  --hairline-strong: #414141;
+
+  --ink: #f2f4f7;
+  --ink-2: #cdd5df;
+  --ink-3: #9fabbb;
+
+  --accent: #64b5f6;
+  --accent-hover: #90caf9;
+  --accent-on: #0b1220;
+  --accent-soft: rgba(100, 181, 246, 0.13);
+  --accent-line: rgba(100, 181, 246, 0.34);
+
+  --signal: #4ade80;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.5), 0 8px 22px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.5), 0 22px 48px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 10px 26px rgba(0, 0, 0, 0.55), 0 34px 72px rgba(0, 0, 0, 0.7);
+
   color-scheme: dark;
 }
 
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --text-xs: 0.78125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.03125rem;
+  --text-lg: 1.09375rem;
+  --text-xl: clamp(1.125rem, 0.4vw + 1rem, 1.25rem);
+  --text-2xl: clamp(1.35rem, 0.9vw + 1.1rem, 1.65rem);
+  --text-3xl: clamp(1.7rem, 1.7vw + 1.1rem, 2.35rem);
+  --text-display: clamp(2rem, 2.6vw + 1.1rem, 3.15rem);
+
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --shell: 1180px;
+  --section-y: clamp(4.5rem, 9vw, 8rem);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur: 260ms;
+  --dur-slow: 520ms;
+}
+
 /* ============================================
-   GLOBAL STYLES
+   BASE
    ============================================ */
 
-* {
-  font-family: 'Poppins', sans-serif;
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -76,216 +103,392 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--text);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-sans);
+  background-color: var(--canvas);
+  color: var(--ink);
   line-height: 1.6;
+  font-size: var(--text-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
-/* Legacy class for compatibility */
-body.dark-mode {
-  background-color: #121212 !important;
-  color: #f0f0f0 !important;
-}
-
-#root {
-  min-height: 100vh;
-  background-color: var(--background);
-  transition: background-color 0.3s ease;
-}
-
+#root,
 .app-wrapper {
-  background-color: var(--background);
-  transition: background-color 0.3s ease;
+  min-height: 100vh;
+  background-color: var(--canvas);
+  overflow-x: clip;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.14;
+  letter-spacing: -0.022em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-on);
 }
 
 /* ============================================
-   SCROLLBAR STYLING
+   LAYOUT PRIMITIVES
+   ============================================ */
+
+.section {
+  padding: var(--section-y) var(--gutter);
+  position: relative;
+}
+
+.section--alt {
+  background-color: var(--canvas-alt);
+  border-block: 1px solid var(--hairline);
+}
+
+/* Inverted closing band — blue in light, black in dark, so the page ends deliberately */
+.section--invert {
+  --canvas: #004b9b;
+  --canvas-alt: #005bb8;
+  --surface: #0060c0;
+  --surface-2: #0069cf;
+  --hairline: rgba(255, 255, 255, 0.18);
+  --hairline-strong: rgba(255, 255, 255, 0.32);
+  --ink: #ffffff;
+  --ink-2: #dceaff;
+  --ink-3: #bcd7fb;
+  --accent: #ffffff;
+  --accent-hover: #ffffff;
+  --accent-on: #004b9b;
+  --accent-soft: rgba(255, 255, 255, 0.14);
+  --accent-line: rgba(255, 255, 255, 0.45);
+  background-color: var(--canvas);
+  color: var(--ink);
+  border-top: 1px solid var(--hairline);
+}
+
+[data-theme='dark'] .section--invert {
+  --canvas: #0a0a0a;
+  --canvas-alt: #101010;
+  --surface: #171717;
+  --surface-2: #1e1e1e;
+  --hairline: #2c2c2c;
+  --hairline-strong: #3d3d3d;
+  --ink: #f2f4f7;
+  --ink-2: #cdd5df;
+  --ink-3: #9fabbb;
+  --accent: #64b5f6;
+  --accent-hover: #90caf9;
+  --accent-on: #0b1220;
+  --accent-soft: rgba(100, 181, 246, 0.13);
+  --accent-line: rgba(100, 181, 246, 0.34);
+}
+
+/* Blueprint rails: hairlines tracking the content edges down the page */
+@media (min-width: 1280px) {
+  .section::after,
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      linear-gradient(var(--hairline), var(--hairline)) calc(50% - var(--shell) / 2) 0 / 1px 100% no-repeat,
+      linear-gradient(var(--hairline), var(--hairline)) calc(50% + var(--shell) / 2) 0 / 1px 100% no-repeat;
+  }
+
+  .section > *,
+  .hero > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.shell {
+  max-width: var(--shell);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Section header: mono index + display title + lede */
+.section-head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  max-width: 72ch;
+}
+
+.section-index {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-index::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  max-width: 90px;
+  background: var(--accent-line);
+}
+
+.section-title {
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.9rem;
+}
+
+.section-lede {
+  font-size: var(--text-lg);
+  color: var(--ink-2);
+  max-width: 62ch;
+  line-height: 1.7;
+}
+
+/* ============================================
+   SHARED ELEMENTS
+   ============================================ */
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+    transform var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+
+.panel:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Mono metadata chip with hairline border — used for tools/tech/tags */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-full);
+  padding: 0.32rem 0.72rem;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease);
+}
+
+.chip:hover {
+  color: var(--accent);
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  padding: 0.85rem 1.5rem;
+  min-height: 46px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--accent-on);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 32%, transparent);
+}
+
+.btn--primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.btn--ghost {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--hairline-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--ghost:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Icon-only circular control */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--hairline);
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease);
+}
+
+.icon-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+
+/* Status dot — QA "pass" signal, used sparingly */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--signal) 18%, transparent);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ============================================
+   SCROLLBAR
    ============================================ */
 
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--surface-dark);
+  background: var(--canvas);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  background: var(--hairline-strong);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--canvas);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
+  background: var(--ink-3);
 }
 
-/* Firefox scrollbar */
 * {
-  scrollbar-color: var(--primary) var(--surface-dark);
+  scrollbar-color: var(--hairline-strong) var(--canvas);
   scrollbar-width: thin;
 }
 
 /* ============================================
-   CONTACT CARD STYLING
-   ============================================ */
-
-.contact-card {
-  background-color: var(--secondary);
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  margin: 3rem auto;
-  max-width: 700px;
-  animation: slideUp 0.8s ease;
-  transition: background-color 0.3s ease;
-}
-
-/* ============================================
-   SECTION STYLES
-   ============================================ */
-
-section {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.section-container {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.section-title {
-  color: var(--primary);
-}
-
-.section-subtitle {
-  color: var(--text-secondary);
-}
-
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* ============================================
-   FOCUS STYLES FOR ACCESSIBILITY
-   ============================================ */
-
-button:focus,
-a:focus {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-}
-
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-
-@media (max-width: 1024px) {
-  .section-container {
-    padding: 0 1.5rem;
-  }
-  
-  html {
-    scroll-padding-top: 70px;
-  }
-}
-
-@media (max-width: 768px) {
-  html {
-    scroll-padding-top: 60px;
-  }
-
-  section {
-    padding: 3rem 1rem !important;
-  }
-  
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-container {
-    padding: 0 1rem;
-  }
-}
-/* ============================================
-   SCROLL REVEAL SYSTEM
+   SCROLL REVEAL
    ============================================ */
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(26px) scale(0.988);
+  transition: opacity 0.72s var(--ease), transform 0.72s var(--ease);
+  will-change: opacity, transform;
 }
 
-.reveal.visible {
+.reveal.visible,
+.stagger.visible > .reveal {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+  will-change: auto;
 }
 
-/* Show reveal children when parent grid becomes visible */
-.stagger-grid.visible > .reveal {
-  opacity: 1;
-  transform: translateY(0);
+.stagger.visible > .reveal:nth-child(1) { transition-delay: 0.05s; }
+.stagger.visible > .reveal:nth-child(2) { transition-delay: 0.13s; }
+.stagger.visible > .reveal:nth-child(3) { transition-delay: 0.21s; }
+.stagger.visible > .reveal:nth-child(4) { transition-delay: 0.29s; }
+.stagger.visible > .reveal:nth-child(5) { transition-delay: 0.37s; }
+.stagger.visible > .reveal:nth-child(6) { transition-delay: 0.45s; }
+.stagger.visible > .reveal:nth-child(7) { transition-delay: 0.53s; }
+.stagger.visible > .reveal:nth-child(8) { transition-delay: 0.61s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
-
-/* Stagger delays — applied when parent grid gets .visible */
-.stagger-grid.visible > .reveal:nth-child(1) { transition-delay: 0.05s; }
-.stagger-grid.visible > .reveal:nth-child(2) { transition-delay: 0.15s; }
-.stagger-grid.visible > .reveal:nth-child(3) { transition-delay: 0.25s; }
-.stagger-grid.visible > .reveal:nth-child(4) { transition-delay: 0.35s; }
-.stagger-grid.visible > .reveal:nth-child(5) { transition-delay: 0.45s; }
-.stagger-grid.visible > .reveal:nth-child(6) { transition-delay: 0.55s; }
-
-/* ============================================
-   SECTION TITLE ACCENT UNDERLINE
-   ============================================ */
-
-.section-title::after {
-  content: '';
-  display: block;
-  width: 56px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light, #3d8ee6));
-  border-radius: 2px;
-  margin: 10px auto 0;
-}
-
-

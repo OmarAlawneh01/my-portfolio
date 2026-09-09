@@ -1,18 +1,16 @@
 import React, { useRef } from 'react';
-import { FaGithub } from 'react-icons/fa';
-import { useTheme } from '../contexts/ThemeContext';
+import { FiPlay, FiArrowUpRight } from 'react-icons/fi';
 import { projectsData } from '../constants/projects';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Projects.css';
 
 function Projects() {
-  const { theme } = useTheme();
-  const [gridRef, gridVisible] = useScrollReveal(0.08);
+  const [gridRef, gridVisible] = useScrollReveal();
+  const [headRef, headVisible] = useScrollReveal();
   const videoRefs = useRef(new Map());
 
   const handleMouseEnter = (id) => {
-    const video = videoRefs.current.get(id);
-    video?.play().catch(() => {});
+    videoRefs.current.get(id)?.play().catch(() => {});
   };
 
   const handleMouseLeave = (id) => {
@@ -24,37 +22,27 @@ function Projects() {
   };
 
   return (
-    <section
-      className="projects-section"
-      id="projects"
-      style={{ backgroundColor: theme.secondary }}
-    >
-      <div className="section-container">
-        <h2 className="section-title" style={{ color: theme.primary }}>
-          Featured Projects
-        </h2>
-        <p className="section-subtitle" style={{ color: theme.textSecondary }}>
-          Hover a card to preview the project in action
-        </p>
+    <section className="section section--alt" id="projects">
+      <div className="shell">
+        <header ref={headRef} className={`section-head reveal ${headVisible ? 'visible' : ''}`}>
+          <p className="section-index">04 / Projects</p>
+          <h2 className="section-title">Things I've built</h2>
+          <p className="section-lede">
+            Personal full-stack projects — the development side of my background. Hover a card to
+            preview it running.
+          </p>
+        </header>
 
-        <div
-          ref={gridRef}
-          className={`projects-grid stagger-grid ${gridVisible ? 'visible' : ''}`}
-        >
-          {projectsData.map((project) => (
+        <div ref={gridRef} className={`projects-grid stagger ${gridVisible ? 'visible' : ''}`}>
+          {projectsData.map((project, index) => (
             <article
               key={project.id}
-              className="project-card reveal"
-              style={{
-                backgroundColor: theme.surfaceLight,
-                boxShadow: `0 4px 20px ${theme.shadow}`,
-              }}
+              className="project-card panel reveal"
               onMouseEnter={() => handleMouseEnter(project.id)}
               onMouseLeave={() => handleMouseLeave(project.id)}
             >
-              {/* Video thumbnail area */}
               {project.videoSrc && (
-                <div className="project-video-wrapper">
+                <div className="project-media">
                   <video
                     ref={(el) => {
                       if (el) videoRefs.current.set(project.id, el);
@@ -67,54 +55,39 @@ function Projects() {
                     loop
                     playsInline
                     preload="metadata"
+                    aria-label={`${project.name} preview`}
                   />
-                  <div className="project-video-overlay">
-                    <div className="project-play-hint">
-                      <span className="project-play-icon">▶</span>
-                      <span className="project-play-label">Preview</span>
-                    </div>
-                  </div>
+                  <span className="project-media-hint" aria-hidden="true">
+                    <FiPlay size={13} />
+                    Preview
+                  </span>
                 </div>
               )}
 
-              {/* Card body */}
               <div className="project-body">
-                <div className="project-header">
-                  <h3 style={{ color: theme.text }}>{project.name}</h3>
-                  {project.repoUrl && (
-                    <a
-                      className="project-github-link"
-                      href={project.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="View on GitHub"
-                      style={{ color: theme.primary, borderColor: `${theme.primary}60` }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <FaGithub size={18} />
-                    </a>
-                  )}
-                </div>
-
-                <p className="project-description" style={{ color: theme.textSecondary }}>
-                  {project.description}
-                </p>
+                <span className="project-index">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className="project-name">{project.name}</h3>
+                <p className="project-description">{project.description}</p>
 
                 <div className="project-tags">
                   {project.tags?.map((tag) => (
-                    <span
-                      key={tag}
-                      className="tag"
-                      style={{
-                        backgroundColor: `${theme.primary}12`,
-                        color: theme.primary,
-                        borderColor: `${theme.primary}30`,
-                      }}
-                    >
-                      {tag}
-                    </span>
+                    <span className="chip" key={tag}>{tag}</span>
                   ))}
                 </div>
+
+                {project.repoUrl && (
+                  <a
+                    className="project-link"
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View source
+                    <FiArrowUpRight size={15} />
+                  </a>
+                )}
               </div>
             </article>
           ))}

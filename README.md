@@ -38,7 +38,7 @@ It showcases my services, selected projects, and contact information with a mode
 - `src/components/ContactCard.jsx` – Material UI contact card
 - `src/components/Contact.jsx` – contact section with email and phone
 - `src/components/Navbar.jsx` – navigation + dark mode toggle
-- `src/components/DigitalClock.jsx` – live digital clock component
+- `src/pages/Experience.jsx`, `src/pages/Education.jsx` – career timeline and certifications
 - `src/App.css` – global styles and theming (including dark mode)
 
 ### Deploying on Vercel
