@@ -24,9 +24,7 @@ function About() {
         <header ref={headRef} className={`section-head reveal ${headVisible ? 'visible' : ''}`}>
           <p className="section-index">01 / About</p>
           <h2 className="section-title">Where engineering and quality meet</h2>
-          <p className="section-lede">
-            I test software the way it was built — because I've built it.
-          </p>
+        
         </header>
 
         <div ref={ref} className={`about-grid stagger ${visible ? 'visible' : ''}`}>
