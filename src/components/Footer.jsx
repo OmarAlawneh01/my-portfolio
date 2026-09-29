@@ -31,7 +31,7 @@ function Footer() {
                 className="icon-btn"
                 aria-label={link.label}
               >
-                <Icon size={16} />
+                <Icon size="1.0rem" />
               </a>
             );
           })}

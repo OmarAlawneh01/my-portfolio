@@ -58,7 +58,7 @@ function Projects() {
                     aria-label={`${project.name} preview`}
                   />
                   <span className="project-media-hint" aria-hidden="true">
-                    <FiPlay size={13} />
+                    <FiPlay size="0.8125rem" />
                     Preview
                   </span>
                 </div>
@@ -85,7 +85,7 @@ function Projects() {
                     rel="noopener noreferrer"
                   >
                     View source
-                    <FiArrowUpRight size={15} />
+                    <FiArrowUpRight size="0.9375rem" />
                   </a>
                 )}
               </div>
