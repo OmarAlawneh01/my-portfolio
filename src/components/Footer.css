@@ -4,7 +4,7 @@
 
 .footer {
   border-top: 1px solid var(--hairline);
-  padding: clamp(2.5rem, 5vw, 3.5rem) var(--gutter) 1.75rem;
+  padding: clamp(2.5rem, 5vw, 3.5rem) max(var(--gutter), var(--safe-r)) calc(1.75rem + env(safe-area-inset-bottom, 0px)) max(var(--gutter), var(--safe-l));
   background: var(--canvas);
 }
 

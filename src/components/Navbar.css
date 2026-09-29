@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 0.9rem var(--gutter);
+  padding: 0.9rem max(var(--gutter), var(--safe-r)) 0.9rem max(var(--gutter), var(--safe-l));
 }
 
 /* ── Logo ── */
@@ -145,6 +145,10 @@
 
 .navbar-sheet.is-open {
   max-height: 70vh;
+  max-height: calc(100dvh - 64px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .navbar-sheet-link {
@@ -162,7 +166,7 @@
   font-size: 1.0625rem;
   font-weight: 500;
   color: var(--ink);
-  padding: 1.05rem var(--gutter);
+  padding: 1.05rem max(var(--gutter), var(--safe-r)) 1.05rem max(var(--gutter), var(--safe-l));
   min-height: 56px;
   transition: color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
 }
@@ -209,6 +213,12 @@
     background: color-mix(in srgb, var(--canvas) 92%, transparent);
     border-bottom-color: var(--hairline);
   }
+}
+
+@media (max-width: 360px) {
+  .navbar-logo { font-size: 0.9rem; }
+  .navbar-logo-role { font-size: 0.56rem; letter-spacing: 0.06em; }
+  .navbar-actions { gap: 0.4rem; }
 }
 
 @media (max-width: 480px) {
