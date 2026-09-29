@@ -252,7 +252,8 @@
   }
 
   .hero-card {
-    max-width: 440px;
+    max-width: 520px;
+    width: 100%;
   }
 
   .hero-title {
@@ -291,5 +292,28 @@
 
   .hero-scroll {
     display: none;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding-top: 5.5rem;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-eyebrow {
+    letter-spacing: 0.04em;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .hero-actions .btn {
+    min-width: 0;
+    width: 100%;
   }
 }
