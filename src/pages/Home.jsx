@@ -45,14 +45,14 @@ function Home() {
           <div className="hero-actions">
             <button className="btn btn--primary" onClick={() => scrollTo('#projects')}>
               View my work
-              <FiArrowDown size={16} />
+              <FiArrowDown size="1.0rem" />
             </button>
             <button className="btn btn--ghost" onClick={() => scrollTo('#contact')}>
               Get in touch
             </button>
             <a className="hero-resume" href={RESUME_URL} target="_blank" rel="noopener noreferrer">
               Résumé
-              <FiArrowUpRight size={15} />
+              <FiArrowUpRight size="0.9375rem" />
             </a>
           </div>
 
@@ -68,7 +68,7 @@ function Home() {
                   className="icon-btn"
                   aria-label={link.label}
                 >
-                  <Icon size={17} />
+                  <Icon size="1.0625rem" />
                 </a>
               );
             })}
@@ -96,7 +96,7 @@ function Home() {
         aria-label="Scroll to About section"
       >
         <span>Scroll</span>
-        <FiArrowDown size={14} />
+        <FiArrowDown size="0.875rem" />
       </button>
     </section>
   );

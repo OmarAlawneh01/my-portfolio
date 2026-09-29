@@ -91,7 +91,7 @@ function Navbar() {
             className="navbar-resume"
           >
             Résumé
-            <FiArrowUpRight size={14} />
+            <FiArrowUpRight size="0.875rem" />
           </a>
 
           <button
@@ -99,7 +99,7 @@ function Navbar() {
             onClick={toggleTheme}
             aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
           >
-            {isDarkMode ? <FiSun size={17} /> : <FiMoon size={17} />}
+            {isDarkMode ? <FiSun size="1.0625rem" /> : <FiMoon size="1.0625rem" />}
           </button>
 
           <button
@@ -108,7 +108,7 @@ function Navbar() {
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? <FiX size={18} /> : <FiMenu size={18} />}
+            {isMenuOpen ? <FiX size="1.125rem" /> : <FiMenu size="1.125rem" />}
           </button>
         </div>
       </div>

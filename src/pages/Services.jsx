@@ -36,7 +36,7 @@ function Services() {
               <article className="practice-card panel reveal" key={item.id}>
                 <div className="practice-card-top">
                   <span className="practice-card-icon">
-                    <Icon size={17} />
+                    <Icon size="1.0625rem" />
                   </span>
                   <span className="practice-card-index">
                     {String(index + 1).padStart(2, '0')}
@@ -52,7 +52,7 @@ function Services() {
         <div ref={devRef} className={`practice-dev panel reveal ${devVisible ? 'visible' : ''}`}>
           <div className="practice-dev-head">
             <span className="practice-card-icon">
-              <FiCode size={17} />
+              <FiCode size="1.0625rem" />
             </span>
             <div>
               <h3>Software development</h3>

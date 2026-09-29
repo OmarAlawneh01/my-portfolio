@@ -24,16 +24,16 @@ function Contact() {
 
         <a className="contact-email" href={`mailto:${PROFILE.email}`}>
           <span>{PROFILE.email}</span>
-          <FiArrowUpRight size={26} />
+          <FiArrowUpRight size="1.625rem" />
         </a>
 
         <div className="contact-meta">
           <a className="contact-meta-item" href={PROFILE.phoneHref}>
-            <FiPhone size={15} />
+            <FiPhone size="0.9375rem" />
             {PROFILE.phone}
           </a>
           <span className="contact-meta-item">
-            <FiMapPin size={15} />
+            <FiMapPin size="0.9375rem" />
             {PROFILE.location}
           </span>
         </div>
@@ -49,7 +49,7 @@ function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Icon size={16} />
+                <Icon size="1.0rem" />
                 {social.label}
               </a>
             );
@@ -60,7 +60,7 @@ function Contact() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FiArrowUpRight size={16} />
+            <FiArrowUpRight size="1.0rem" />
             Résumé
           </a>
         </div>
